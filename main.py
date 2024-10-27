@@ -34,6 +34,7 @@ def setTronPK(pk):
 
 
 def job():
+    print(111)
     for address in accounts:
         print("Checking " + address)
         balance = tron.fromSun(tron.trx.get_balance(address))
@@ -45,15 +46,16 @@ def job():
                 tron.trx.send(mainAccount, float(balance))
             except:
                 print("Error while transfering, please try again...")
-            
+
 
 print("Initiating TRX divided gathering...")
 # add job schedule
 print("Scheduling job...")
-#schedule.every(1).minutes.do(job)
-schedule.every(scanMin).seconds.do(job)
+schedule.every(1).minutes.do(job)
+# schedule.every(scanMin).seconds.do(job)
 
 # just wait 
 while 1:
     schedule.run_pending()
-    time.sleep(60)
+    print('rrr')
+    time.sleep(3)
